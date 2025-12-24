@@ -54,7 +54,7 @@
             
             <div class="filter-group">
                 <h3><i class="fas fa-sort-amount-up"></i> Сортировка</h3>
-                <select class="sort-select">
+                <select class="sort-select" id="sortSelect">
                     <option value="popular">По популярности</option>
                     <option value="price-asc">По цене: от дешевых</option>
                     <option value="price-desc">По цене: от дорогих</option>
@@ -82,7 +82,6 @@
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
-                <!-- Тот же подвал, что на главной -->
                 <div class="footer-section">
                     <div class="logo">
                         <i class="fas fa-tree"></i>
@@ -122,7 +121,7 @@
                 name: "Стеклянный шар 'Снежинка'",
                 description: "Хрупкий стеклянный шар с ручной росписью снежинками",
                 price: 850,
-                image: "https://images.unsplash.com/photo-1512386233853-c3d0d61f6d13?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+                image: "https://images.unsplash.com/photo-1512386233853-c3d0d61f6d13?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300&q=80",
                 category: "glass",
                 badge: "Хит продаж"
             },
@@ -131,7 +130,7 @@
                 name: "Деревянный олень",
                 description: "Резной деревянный олень с новогодним узором",
                 price: 1200,
-                image: "https://images.unsplash.com/photo-1574359411659-619d6d6c1415?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+                image: "https://images.unsplash.com/photo-1574359411659-619d6d6c1415?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300&q=80",
                 category: "wood",
                 badge: "Эко-товар"
             },
@@ -140,7 +139,7 @@
                 name: "Вязаный снеговик",
                 description: "Мягкий вязаный снеговик ручной работы",
                 price: 650,
-                image: "https://images.unsplash.com/photo-1542718610-a1d656d1884c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+                image: "https://images.unsplash.com/photo-1542718610-a1d656d1884c?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300&q=80",
                 category: "handmade"
             },
             {
@@ -148,7 +147,7 @@
                 name: "Винтажная шишка",
                 description: "Старинная игрушка в винтажном стиле",
                 price: 950,
-                image: "https://images.unsplash.com/photo-1573869900138-93b8f6760ee5?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+                image: "https://images.unsplash.com/photo-1573869900138-93b8f6760ee5?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300&q=80",
                 category: "vintage",
                 badge: "Винтаж"
             },
@@ -157,7 +156,7 @@
                 name: "Светящаяся гирлянда",
                 description: "Тёплая светодиодная гирлянда с 8 режимами",
                 price: 1800,
-                image: "https://images.unsplash.com/photo-1512529904539-2034f9e1c8b9?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+                image: "https://images.unsplash.com/photo-1512529904539-2034f9e1c8b9?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300&q=80",
                 category: "lights"
             },
             {
@@ -165,7 +164,7 @@
                 name: "Ангел из фетра",
                 description: "Милый ангелочек, сшитый вручную из фетра",
                 price: 720,
-                image: "https://images.unsplash.com/photo-1579547944212-c4f496d3044f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+                image: "https://images.unsplash.com/photo-1579547944212-c4f496d3044f?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300&q=80",
                 category: "handmade"
             },
             {
@@ -173,7 +172,7 @@
                 name: "Шар 'Морозный узор'",
                 description: "Стеклянный шар с эффектом инея и морозными узорами",
                 price: 1100,
-                image: "https://images.unsplash.com/photo-1574359455812-215704cd0c84?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+                image: "https://images.unsplash.com/photo-1574359455812-215704cd0c84?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300&q=80",
                 category: "glass",
                 badge: "Новинка"
             },
@@ -182,7 +181,7 @@
                 name: "Ёлочка из дерева",
                 description: "Миниатюрная резная ёлочка из натурального дерева",
                 price: 890,
-                image: "https://images.unsplash.com/photo-1606836131093-60d8ce42f5c5?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+                image: "https://images.unsplash.com/photo-1606836131093-60d8ce42f5c5?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300&q=80",
                 category: "wood"
             },
             {
@@ -190,7 +189,7 @@
                 name: "Снеговик из шерсти",
                 description: "Валяный снеговик из натуральной шерсти",
                 price: 750,
-                image: "https://images.unsplash.com/photo-1482513454561-4245d1b41618?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+                image: "https://images.unsplash.com/photo-1482513454561-4245d1b41618?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300&q=80",
                 category: "handmade"
             },
             {
@@ -198,20 +197,43 @@
                 name: "Звезда на верхушку",
                 description: "Большая светящаяся звезда для верхушки ёлки",
                 price: 1500,
-                image: "https://images.unsplash.com/photo-1577720643365-7c9c7b69d0c6?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+                image: "https://images.unsplash.com/photo-1577720643365-7c9c7b69d0c6?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300&q=80",
                 category: "lights",
                 badge: "Популярное"
             }
         ];
 
+        let currentFilter = 'all';
+        let currentSort = 'popular';
+
         function renderProducts(products = allProducts) {
             const container = document.getElementById('productsGrid');
             if (!container) return;
             
-            container.innerHTML = products.map(product => `
+            // Фильтрация
+            let filteredProducts = [...products];
+            if (currentFilter !== 'all') {
+                filteredProducts = filteredProducts.filter(p => p.category === currentFilter);
+            }
+            
+            // Сортировка
+            filteredProducts = sortProducts(filteredProducts, currentSort);
+            
+            if (filteredProducts.length === 0) {
+                container.innerHTML = `
+                    <div style="grid-column: 1 / -1; text-align: center; padding: 40px;">
+                        <i class="fas fa-gift" style="font-size: 3rem; color: var(--light-green); margin-bottom: 20px;"></i>
+                        <h3>Товары не найдены</h3>
+                        <p>Попробуйте выбрать другую категорию</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            container.innerHTML = filteredProducts.map(product => `
                 <div class="product-card" data-category="${product.category}">
                     ${product.badge ? `<span class="product-badge">${product.badge}</span>` : ''}
-                    <img src="${product.image}" alt="${product.name}" class="product-image">
+                    <img src="${product.image}" alt="${product.name}" class="product-image" loading="lazy">
                     <div class="product-info">
                         <h3 class="product-name">${product.name}</h3>
                         <p class="product-description">${product.description}</p>
@@ -229,52 +251,15 @@
             document.querySelectorAll('.btn-add-to-cart').forEach(button => {
                 button.addEventListener('click', function() {
                     const productId = parseInt(this.dataset.id);
-                    addToCart(productId);
+                    if (window.cartFunctions && window.cartFunctions.addToCart) {
+                        window.cartFunctions.addToCart(productId);
+                    } else {
+                        console.error('Функция addToCart не найдена');
+                    }
                 });
             });
         }
 
-        function setupFilters() {
-            const filterButtons = document.querySelectorAll('.filter-btn');
-            const sortSelect = document.querySelector('.sort-select');
-            
-            filterButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    // Убираем активный класс у всех кнопок
-                    filterButtons.forEach(btn => btn.classList.remove('active'));
-                    // Добавляем активный класс текущей кнопке
-                    this.classList.add('active');
-                    
-                    const filter = this.dataset.filter;
-                    let filteredProducts = allProducts;
-                    
-                    if (filter !== 'all') {
-                        filteredProducts = allProducts.filter(p => p.category === filter);
-                    }
-                    
-                    // Применяем сортировку
-                    const sort = sortSelect.value;
-                    filteredProducts = sortProducts(filteredProducts, sort);
-                    
-                    renderProducts(filteredProducts);
-                });
-            });
-            
-            if (sortSelect) {
-                sortSelect.addEventListener('change', function() {
-                    const filterBtn = document.querySelector('.filter-btn.active');
-                    const filter = filterBtn ? filterBtn.dataset.filter : 'all';
-                    
-                    let filteredProducts = filter === 'all' 
-                        ? allProducts 
-                        : allProducts.filter(p => p.category === filter);
-                    
-                    filteredProducts = sortProducts(filteredProducts, this.value);
-                    renderProducts(filteredProducts);
-                });
-            }
-        }
-        
         function sortProducts(products, sortType) {
             const sorted = [...products];
             
@@ -284,9 +269,38 @@
                 case 'price-desc':
                     return sorted.sort((a, b) => b.price - a.price);
                 case 'new':
-                    return sorted.reverse(); // Просто для примера
+                    // Для примера: новые товары - это с id > 5
+                    return sorted.sort((a, b) => b.id - a.id);
                 default:
-                    return sorted; // По популярности (исходный порядок)
+                    return sorted;
+            }
+        }
+
+        function setupFilters() {
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const sortSelect = document.getElementById('sortSelect');
+            
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    currentFilter = this.dataset.filter;
+                    renderProducts();
+                });
+            });
+            
+            if (sortSelect) {
+                sortSelect.addEventListener('change', function() {
+                    currentSort = this.value;
+                    renderProducts();
+                });
+            }
+        }
+
+        function updateCartCount() {
+            if (window.cartFunctions && window.cartFunctions.updateCartCount) {
+                window.cartFunctions.updateCartCount();
             }
         }
 
@@ -302,6 +316,18 @@
                 const filterBtn = document.querySelector(`.filter-btn[data-filter="${category}"]`);
                 if (filterBtn) {
                     filterBtn.click();
+                }
+            }
+        });
+
+        // Добавляем обработчик для всех кнопок добавления в корзину
+        document.addEventListener('click', function(e) {
+            if (e.target.closest('.btn-add-to-cart')) {
+                const button = e.target.closest('.btn-add-to-cart');
+                const productId = parseInt(button.dataset.id);
+                
+                if (window.cartFunctions && window.cartFunctions.addToCart) {
+                    window.cartFunctions.addToCart(productId);
                 }
             }
         });
