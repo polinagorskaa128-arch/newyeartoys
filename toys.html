@@ -6,6 +6,25 @@
     <title>Каталог игрушек - Новогодняя Лавка</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        #global-notification {
+            position: fixed;
+            top: 100px;
+            right: 20px;
+            background: #7FB685;
+            color: white;
+            padding: 15px 25px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            z-index: 9999;
+            transform: translateX(150%);
+            transition: transform 0.3s ease;
+            max-width: 300px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+    </style>
 </head>
 <body>
     <header class="header">
@@ -27,7 +46,7 @@
             <div class="cart-header">
                 <a href="cart.html" class="cart-link">
                     <i class="fas fa-shopping-cart cart-icon"></i>
-                    <span class="cart-count">0</span>
+                    <span class="cart-count" id="cartCount">0</span>
                 </a>
             </div>
         </div>
@@ -67,16 +86,6 @@
         <div class="products-grid" id="productsGrid">
             <!-- Товары загружаются через JavaScript -->
         </div>
-
-        <!-- Пагинация -->
-        <div class="pagination">
-            <button class="pagination-btn active">1</button>
-            <button class="pagination-btn">2</button>
-            <button class="pagination-btn">3</button>
-            <span>...</span>
-            <button class="pagination-btn">5</button>
-            <button class="pagination-btn next">Далее <i class="fas fa-chevron-right"></i></button>
-        </div>
     </main>
 
     <footer class="footer">
@@ -107,111 +116,105 @@
             </div>
             
             <div class="footer-bottom">
-                <p>&copy; 2023 Новогодняя Лавка. Все права защищены.</p>
+                <p>&copy; 2025 Новогодняя Лавка. Все права защищены.</p>
             </div>
         </div>
     </footer>
 
-    <script src="cart.js"></script>
     <script>
-        // Все товары
-        const allProducts = [
-            {
-                id: 1,
-                name: "Стеклянный шар 'Снежинка'",
-                description: "Хрупкий стеклянный шар с ручной росписью снежинками",
-                price: 850,
-                image: "https://images.unsplash.com/photo-1512386233853-c3d0d61f6d13?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300&q=80",
-                category: "glass",
-                badge: "Хит продаж"
-            },
-            {
-                id: 2,
-                name: "Деревянный олень",
-                description: "Резной деревянный олень с новогодним узором",
-                price: 1200,
-                image: "https://images.unsplash.com/photo-1574359411659-619d6d6c1415?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300&q=80",
-                category: "wood",
-                badge: "Эко-товар"
-            },
-            {
-                id: 3,
-                name: "Вязаный снеговик",
-                description: "Мягкий вязаный снеговик ручной работы",
-                price: 650,
-                image: "https://images.unsplash.com/photo-1542718610-a1d656d1884c?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300&q=80",
-                category: "handmade"
-            },
-            {
-                id: 4,
-                name: "Винтажная шишка",
-                description: "Старинная игрушка в винтажном стиле",
-                price: 950,
-                image: "https://images.unsplash.com/photo-1573869900138-93b8f6760ee5?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300&q=80",
-                category: "vintage",
-                badge: "Винтаж"
-            },
-            {
-                id: 5,
-                name: "Светящаяся гирлянда",
-                description: "Тёплая светодиодная гирлянда с 8 режимами",
-                price: 1800,
-                image: "https://images.unsplash.com/photo-1512529904539-2034f9e1c8b9?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300&q=80",
-                category: "lights"
-            },
-            {
-                id: 6,
-                name: "Ангел из фетра",
-                description: "Милый ангелочек, сшитый вручную из фетра",
-                price: 720,
-                image: "https://images.unsplash.com/photo-1579547944212-c4f496d3044f?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300&q=80",
-                category: "handmade"
-            },
-            {
-                id: 7,
-                name: "Шар 'Морозный узор'",
-                description: "Стеклянный шар с эффектом инея и морозными узорами",
-                price: 1100,
-                image: "https://images.unsplash.com/photo-1574359455812-215704cd0c84?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300&q=80",
-                category: "glass",
-                badge: "Новинка"
-            },
-            {
-                id: 8,
-                name: "Ёлочка из дерева",
-                description: "Миниатюрная резная ёлочка из натурального дерева",
-                price: 890,
-                image: "https://images.unsplash.com/photo-1606836131093-60d8ce42f5c5?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300&q=80",
-                category: "wood"
-            },
-            {
-                id: 9,
-                name: "Снеговик из шерсти",
-                description: "Валяный снеговик из натуральной шерсти",
-                price: 750,
-                image: "https://images.unsplash.com/photo-1482513454561-4245d1b41618?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300&q=80",
-                category: "handmade"
-            },
-            {
-                id: 10,
-                name: "Звезда на верхушку",
-                description: "Большая светящаяся звезда для верхушки ёлки",
-                price: 1500,
-                image: "https://images.unsplash.com/photo-1577720643365-7c9c7b69d0c6?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300&q=80",
-                category: "lights",
-                badge: "Популярное"
+        // ФУНКЦИИ КОРЗИНЫ
+        const productsDB = {
+            1: { id: 1, name: "Стеклянный шар 'Снежинка'", price: 850, category: "glass", image: "https://images.unsplash.com/photo-1512386233853-c3d0d61f6d13?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300&q=80" },
+            2: { id: 2, name: "Деревянный олень", price: 1200, category: "wood", image: "https://images.unsplash.com/photo-1574359411659-619d6d6c1415?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300&q=80" },
+            3: { id: 3, name: "Вязаный снеговик", price: 650, category: "handmade", image: "https://images.unsplash.com/photo-1542718610-a1d656d1884c?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300&q=80" },
+            4: { id: 4, name: "Винтажная шишка", price: 950, category: "vintage", image: "https://images.unsplash.com/photo-1573869900138-93b8f6760ee5?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300&q=80" },
+            5: { id: 5, name: "Светящаяся гирлянда", price: 1800, category: "lights", image: "https://images.unsplash.com/photo-1512529904539-2034f9e1c8b9?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300&q=80" },
+            6: { id: 6, name: "Ангел из фетра", price: 720, category: "handmade", image: "https://images.unsplash.com/photo-1579547944212-c4f496d3044f?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300&q=80" },
+            7: { id: 7, name: "Шар 'Морозный узор'", price: 1100, category: "glass", image: "https://images.unsplash.com/photo-1574359455812-215704cd0c84?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300&q=80" },
+            8: { id: 8, name: "Ёлочка из дерева", price: 890, category: "wood", image: "https://images.unsplash.com/photo-1606836131093-60d8ce42f5c5?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300&q=80" }
+        };
+
+        function getCart() {
+            const cart = localStorage.getItem('newyear_cart');
+            return cart ? JSON.parse(cart) : [];
+        }
+
+        function saveCart(cart) {
+            localStorage.setItem('newyear_cart', JSON.stringify(cart));
+        }
+
+        function addToCart(productId) {
+            const cart = getCart();
+            const product = productsDB[productId];
+            
+            if (!product) return;
+            
+            const existingItem = cart.find(item => item.id === productId);
+            
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({
+                    id: product.id,
+                    name: product.name,
+                    price: product.price,
+                    image: product.image,
+                    quantity: 1
+                });
             }
+            
+            saveCart(cart);
+            updateCartCount();
+            showNotification(`${product.name} добавлен в корзину!`);
+        }
+
+        function updateCartCount() {
+            const cart = getCart();
+            const count = cart.reduce((total, item) => total + item.quantity, 0);
+            document.getElementById('cartCount').textContent = count;
+        }
+
+        function showNotification(text, type = 'success') {
+            let notification = document.getElementById('global-notification');
+            
+            if (!notification) {
+                notification = document.createElement('div');
+                notification.id = 'global-notification';
+                document.body.appendChild(notification);
+            }
+            
+            notification.innerHTML = `
+                <i class="fas fa-${type === 'warning' ? 'exclamation-triangle' : 'check-circle'}"></i>
+                <span>${text}</span>
+            `;
+            
+            notification.style.transform = 'translateX(0)';
+            setTimeout(() => {
+                notification.style.transform = 'translateX(150%)';
+            }, 3000);
+        }
+
+        // ВСЕ ТОВАРЫ
+        const allProducts = [
+            { id: 1, name: "Стеклянный шар 'Снежинка'", description: "Хрупкий стеклянный шар с ручной росписью снежинками", price: 850, category: "glass", image: "https://images.unsplash.com/photo-1512386233853-c3d0d61f6d13?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300&q=80", badge: "Хит продаж" },
+            { id: 2, name: "Деревянный олень", description: "Резной деревянный олень с новогодним узором", price: 1200, category: "wood", image: "https://images.unsplash.com/photo-1574359411659-619d6d6c1415?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300&q=80", badge: "Эко-товар" },
+            { id: 3, name: "Вязаный снеговик", description: "Мягкий вязаный снеговик ручной работы", price: 650, category: "handmade", image: "https://images.unsplash.com/photo-1542718610-a1d656d1884c?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300&q=80" },
+            { id: 4, name: "Винтажная шишка", description: "Старинная игрушка в винтажном стиле", price: 950, category: "vintage", image: "https://images.unsplash.com/photo-1573869900138-93b8f6760ee5?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300&q=80", badge: "Винтаж" },
+            { id: 5, name: "Светящаяся гирлянда", description: "Тёплая светодиодная гирлянда с 8 режимами", price: 1800, category: "lights", image: "https://images.unsplash.com/photo-1512529904539-2034f9e1c8b9?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300&q=80" },
+            { id: 6, name: "Ангел из фетра", description: "Милый ангелочек, сшитый вручную из фетра", price: 720, category: "handmade", image: "https://images.unsplash.com/photo-1579547944212-c4f496d3044f?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300&q=80" },
+            { id: 7, name: "Шар 'Морозный узор'", description: "Стеклянный шар с эффектом инея и морозными узорами", price: 1100, category: "glass", image: "https://images.unsplash.com/photo-1574359455812-215704cd0c84?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300&q=80", badge: "Новинка" },
+            { id: 8, name: "Ёлочка из дерева", description: "Миниатюрная резная ёлочка из натурального дерева", price: 890, category: "wood", image: "https://images.unsplash.com/photo-1606836131093-60d8ce42f5c5?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300&q=80" }
         ];
 
         let currentFilter = 'all';
         let currentSort = 'popular';
 
-        function renderProducts(products = allProducts) {
+        function renderProducts() {
             const container = document.getElementById('productsGrid');
             if (!container) return;
             
             // Фильтрация
-            let filteredProducts = [...products];
+            let filteredProducts = [...allProducts];
             if (currentFilter !== 'all') {
                 filteredProducts = filteredProducts.filter(p => p.category === currentFilter);
             }
@@ -222,7 +225,7 @@
             if (filteredProducts.length === 0) {
                 container.innerHTML = `
                     <div style="grid-column: 1 / -1; text-align: center; padding: 40px;">
-                        <i class="fas fa-gift" style="font-size: 3rem; color: var(--light-green); margin-bottom: 20px;"></i>
+                        <i class="fas fa-gift" style="font-size: 3rem; color: #E8F4EA; margin-bottom: 20px;"></i>
                         <h3>Товары не найдены</h3>
                         <p>Попробуйте выбрать другую категорию</p>
                     </div>
@@ -233,7 +236,7 @@
             container.innerHTML = filteredProducts.map(product => `
                 <div class="product-card" data-category="${product.category}">
                     ${product.badge ? `<span class="product-badge">${product.badge}</span>` : ''}
-                    <img src="${product.image}" alt="${product.name}" class="product-image" loading="lazy">
+                    <img src="${product.image}" alt="${product.name}" class="product-image">
                     <div class="product-info">
                         <h3 class="product-name">${product.name}</h3>
                         <p class="product-description">${product.description}</p>
@@ -247,15 +250,11 @@
                 </div>
             `).join('');
             
-            // Добавляем обработчики для кнопок
+            // Добавляем обработчики
             document.querySelectorAll('.btn-add-to-cart').forEach(button => {
                 button.addEventListener('click', function() {
                     const productId = parseInt(this.dataset.id);
-                    if (window.cartFunctions && window.cartFunctions.addToCart) {
-                        window.cartFunctions.addToCart(productId);
-                    } else {
-                        console.error('Функция addToCart не найдена');
-                    }
+                    addToCart(productId);
                 });
             });
         }
@@ -269,8 +268,7 @@
                 case 'price-desc':
                     return sorted.sort((a, b) => b.price - a.price);
                 case 'new':
-                    // Для примера: новые товары - это с id > 5
-                    return sorted.sort((a, b) => b.id - a.id);
+                    return sorted.reverse();
                 default:
                     return sorted;
             }
@@ -298,12 +296,7 @@
             }
         }
 
-        function updateCartCount() {
-            if (window.cartFunctions && window.cartFunctions.updateCartCount) {
-                window.cartFunctions.updateCartCount();
-            }
-        }
-
+        // ИНИЦИАЛИЗАЦИЯ
         document.addEventListener('DOMContentLoaded', function() {
             updateCartCount();
             renderProducts();
@@ -316,18 +309,6 @@
                 const filterBtn = document.querySelector(`.filter-btn[data-filter="${category}"]`);
                 if (filterBtn) {
                     filterBtn.click();
-                }
-            }
-        });
-
-        // Добавляем обработчик для всех кнопок добавления в корзину
-        document.addEventListener('click', function(e) {
-            if (e.target.closest('.btn-add-to-cart')) {
-                const button = e.target.closest('.btn-add-to-cart');
-                const productId = parseInt(button.dataset.id);
-                
-                if (window.cartFunctions && window.cartFunctions.addToCart) {
-                    window.cartFunctions.addToCart(productId);
                 }
             }
         });
