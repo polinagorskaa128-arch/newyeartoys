@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Новогодняя Лавка - Главная</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Шапка -->
+    <header class="header">
+        <div class="container header-container">
+            <div class="logo">
+                <i class="fas fa-tree"></i>
+                <h1>Новогодняя <span>Лавка</span></h1>
+            </div>
+            
+            <nav class="nav">
+                <ul>
+                    <li><a href="index.html" class="active"><i class="fas fa-home"></i> Главная</a></li>
+                    <li><a href="toys.html"><i class="fas fa-gift"></i> Игрушки</a></li>
+                    <li><a href="delivery.html"><i class="fas fa-truck"></i> Доставка</a></li>
+                    <li><a href="contacts.html"><i class="fas fa-phone"></i> Контакты</a></li>
+                </ul>
+            </nav>
+            
+            <div class="cart-header">
+                <a href="cart.html" class="cart-link">
+                    <i class="fas fa-shopping-cart cart-icon"></i>
+                    <span class="cart-count">0</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Герой-секция -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h2>Волшебство в каждой игрушке</h2>
+                <p>Уникальные ёлочные игрушки ручной работы для создания сказочной атмосферы в вашем доме</p>
+                <a href="toys.html" class="btn-primary">
+                    <i class="fas fa-gifts"></i> Смотреть каталог
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Преимущества -->
+    <section class="features">
+        <div class="container">
+            <h2 class="section-title">Почему выбирают нас</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-hand-sparkles"></i>
+                    </div>
+                    <h3>Ручная работа</h3>
+                    <p>Каждая игрушка создана с любовью и вниманием к деталям</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h3>Эко-материалы</h3>
+                    <p>Используем только безопасные и натуральные материалы</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shipping-fast"></i>
+                    </div>
+                    <h3>Быстрая доставка</h3>
+                    <p>Доставим ваш заказ в любой город России за 2-5 дней</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-gift"></i>
+                    </div>
+                    <h3>Подарочная упаковка</h3>
+                    <p>Бесплатная праздничная упаковка для каждого заказа</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Популярные товары -->
+    <section class="popular-products">
+        <div class="container">
+            <h2 class="section-title">Популярные игрушки</h2>
+            <div class="products-grid" id="popularProducts">
+                <!-- Товары загружаются через JavaScript -->
+            </div>
+            <div class="text-center">
+                <a href="toys.html" class="btn-secondary">Все игрушки <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Отзывы -->
+    <section class="reviews">
+        <div class="container">
+            <h2 class="section-title">Отзывы покупателей</h2>
+            <div class="reviews-slider">
+                <div class="review-card">
+                    <div class="review-stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p>"Игрушки просто волшебные! Качество на высоте, доставка быстрая. Украсили всю ёлку!"</p>
+                    <div class="review-author">
+                        <strong>Анна, Москва</strong>
+                    </div>
+                </div>
+                
+                <div class="review-card">
+                    <div class="review-stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                    <p>"Заказывала деревянные игрушки - очень качественные, пахнут лесом. Дети в восторге!"</p>
+                    <div class="review-author">
+                        <strong>Ольга, Санкт-Петербург</strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Подвал -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="logo">
+                        <i class="fas fa-tree"></i>
+                        <h3>Новогодняя <span>Лавка</span></h3>
+                    </div>
+                    <p>Создаём праздничное настроение с 2015 года</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-vk"></i></a>
+                        <a href="#"><i class="fab fa-telegram"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Магазин</h4>
+                    <ul>
+                        <li><a href="toys.html">Все игрушки</a></li>
+                        <li><a href="toys.html?category=glass">Стеклянные</a></li>
+                        <li><a href="toys.html?category=wood">Деревянные</a></li>
+                        <li><a href="toys.html?category=handmade">Ручная работа</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Информация</h4>
+                    <ul>
+                        <li><a href="delivery.html">Доставка и оплата</a></li>
+                        <li><a href="#">Возврат</a></li>
+                        <li><a href="contacts.html">Контакты</a></li>
+                        <li><a href="#">О нас</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Контакты</h4>
+                    <p><i class="fas fa-map-marker-alt"></i> г. Москва, ул. Новогодняя, 15</p>
+                    <p><i class="fas fa-phone"></i> +7 (999) 123-45-67</p>
+                    <p><i class="fas fa-envelope"></i> hello@newyear-shop.ru</p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2023 Новогодняя Лавка. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="cart.js"></script>
+    <script>
+        // Отображение популярных товаров на главной
+        const popularProducts = [
+            {
+                id: 1,
+                name: "Стеклянный шар 'Снежинка'",
+                price: 850,
+                image: "https://images.unsplash.com/photo-1512386233853-c3d0d61f6d13?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+                badge: "Хит"
+            },
+            {
+                id: 2,
+                name: "Деревянный олень",
+                price: 1200,
+                image: "https://images.unsplash.com/photo-1574359411659-619d6d6c1415?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+                badge: "Эко"
+            },
+            {
+                id: 3,
+                name: "Вязаный снеговик",
+                price: 650,
+                image: "https://images.unsplash.com/photo-1542718610-a1d656d1884c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+            },
+            {
+                id: 7,
+                name: "Шар 'Морозный узор'",
+                price: 1100,
+                image: "https://images.unsplash.com/photo-1574359455812-215704cd0c84?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+                badge: "Новинка"
+            }
+        ];
+
+        function renderPopularProducts() {
+            const container = document.getElementById('popularProducts');
+            if (!container) return;
+            
+            container.innerHTML = popularProducts.map(product => `
+                <div class="product-card">
+                    ${product.badge ? `<span class="product-badge">${product.badge}</span>` : ''}
+                    <img src="${product.image}" alt="${product.name}" class="product-image">
+                    <div class="product-info">
+                        <h3 class="product-name">${product.name}</h3>
+                        <div class="product-price">${product.price} ₽</div>
+                        <button class="btn-add-to-cart" data-id="${product.id}">
+                            <i class="fas fa-cart-plus"></i> В корзину
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+            
+            // Добавляем обработчики для кнопок
+            document.querySelectorAll('.btn-add-to-cart').forEach(button => {
+                button.addEventListener('click', function() {
+                    const productId = parseInt(this.dataset.id);
+                    addToCart(productId);
+                });
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            updateCartCount();
+            renderPopularProducts();
+        });
+    </script>
+</body>
+</html>

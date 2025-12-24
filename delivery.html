@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Доставка и оплата - Новогодняя Лавка</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container header-container">
+            <div class="logo">
+                <i class="fas fa-tree"></i>
+                <h1>Новогодняя <span>Лавка</span></h1>
+            </div>
+            
+            <nav class="nav">
+                <ul>
+                    <li><a href="index.html"><i class="fas fa-home"></i> Главная</a></li>
+                    <li><a href="toys.html"><i class="fas fa-gift"></i> Игрушки</a></li>
+                    <li><a href="delivery.html" class="active"><i class="fas fa-truck"></i> Доставка</a></li>
+                    <li><a href="contacts.html"><i class="fas fa-phone"></i> Контакты</a></li>
+                </ul>
+            </nav>
+            
+            <div class="cart-header">
+                <a href="cart.html" class="cart-link">
+                    <i class="fas fa-shopping-cart cart-icon"></i>
+                    <span class="cart-count">0</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="page-header">
+            <h1><i class="fas fa-truck"></i> Доставка и оплата</h1>
+            <p>Вся информация о способах доставки и оплаты ваших заказов</p>
+        </div>
+
+        <div class="delivery-content">
+            <div class="delivery-section">
+                <h2><i class="fas fa-shipping-fast"></i> Способы доставки</h2>
+                
+                <div class="delivery-methods">
+                    <div class="method-card">
+                        <div class="method-icon">
+                            <i class="fas fa-box"></i>
+                        </div>
+                        <h3>Почта России</h3>
+                        <p class="method-price">от 250 ₽</p>
+                        <p>Срок доставки: 5-14 дней</p>
+                        <p>Отслеживание заказа доступно</p>
+                    </div>
+                    
+                    <div class="method-card">
+                        <div class="method-icon">
+                            <i class="fas fa-truck"></i>
+                        </div>
+                        <h3>Курьерская доставка</h3>
+                        <p class="method-price">от 400 ₽</p>
+                        <p>Срок доставки: 2-5 дней</p>
+                        <p>Доставка до двери</p>
+                    </div>
+                    
+                    <div class="method-card highlight">
+                        <div class="method-icon">
+                            <i class="fas fa-gift"></i>
+                        </div>
+                        <h3>Бесплатная доставка</h3>
+                        <p class="method-price">0 ₽</p>
+                        <p>При заказе от 3000 ₽</p>
+                        <p>Почта России</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="delivery-section">
+                <h2><i class="fas fa-credit-card"></i> Способы оплаты</h2>
+                
+                <div class="payment-methods">
+                    <div class="payment-card">
+                        <i class="fab fa-cc-visa"></i>
+                        <h3>Банковской картой</h3>
+                        <p>Оплата онлайн при оформлении заказа</p>
+                    </div>
+                    
+                    <div class="payment-card">
+                        <i class="fas fa-money-bill-wave"></i>
+                        <h3>Наличными</h3>
+                        <p>Оплата при получении заказа</p>
+                    </div>
+                    
+                    <div class="payment-card">
+                        <i class="fab fa-cc-paypal"></i>
+                        <h3>Электронные деньги</h3>
+                        <p>ЮMoney, WebMoney, PayPal</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="delivery-section">
+                <h2><i class="fas fa-question-circle"></i> Частые вопросы</h2>
+                
+                <div class="faq">
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            Как отследить мой заказ?
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="faq-answer">
+                            <p>После отправки заказа мы вышлем вам трек-номер для отслеживания на почту и в SMS.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            Можно ли изменить адрес доставки?
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Да, вы можете изменить адрес до отправки заказа. Свяжитесь с нами по телефону или через форму обратной связи.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            Как происходит упаковка хрупких игрушек?
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Все стеклянные и хрупкие игрушки упаковываются в защитный пузырчатый материал и картонные коробки.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <!-- Тот же подвал -->
+    </footer>
+
+    <script src="cart.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            updateCartCount();
+            
+            // FAQ аккордеон
+            const faqQuestions = document.querySelectorAll('.faq-question');
+            faqQuestions.forEach(question => {
+                question.addEventListener('click', function() {
+                    const answer = this.nextElementSibling;
+                    const icon = this.querySelector('i');
+                    
+                    // Закрываем все остальные
+                    document.querySelectorAll('.faq-answer').forEach(item => {
+                        if (item !== answer) {
+                            item.style.maxHeight = null;
+                            item.previousElementSibling.querySelector('i').className = 'fas fa-chevron-down';
+                        }
+                    });
+                    
+                    // Открываем/закрываем текущий
+                    if (answer.style.maxHeight) {
+                        answer.style.maxHeight = null;
+                        icon.className = 'fas fa-chevron-down';
+                    } else {
+                        answer.style.maxHeight = answer.scrollHeight + 'px';
+                        icon.className = 'fas fa-chevron-up';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

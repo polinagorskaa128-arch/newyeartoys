@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Корзина - Новогодняя Лавка</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container header-container">
+            <div class="logo">
+                <i class="fas fa-tree"></i>
+                <h1>Новогодняя <span>Лавка</span></h1>
+            </div>
+            
+            <nav class="nav">
+                <ul>
+                    <li><a href="index.html"><i class="fas fa-home"></i> Главная</a></li>
+                    <li><a href="toys.html"><i class="fas fa-gift"></i> Игрушки</a></li>
+                    <li><a href="delivery.html"><i class="fas fa-truck"></i> Доставка</a></li>
+                    <li><a href="contacts.html"><i class="fas fa-phone"></i> Контакты</a></li>
+                </ul>
+            </nav>
+            
+            <div class="cart-header">
+                <a href="cart.html" class="cart-link active">
+                    <i class="fas fa-shopping-cart cart-icon"></i>
+                    <span class="cart-count">0</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="page-header">
+            <h1><i class="fas fa-shopping-cart"></i> Корзина</h1>
+            <p>Товары, которые вы выбрали для покупки</p>
+        </div>
+
+        <div class="cart-content">
+            <div class="cart-items-section">
+                <div id="cartEmpty" class="cart-empty">
+                    <i class="fas fa-shopping-cart"></i>
+                    <h3>Ваша корзина пуста</h3>
+                    <p>Добавьте товары из каталога, чтобы сделать заказ</p>
+                    <a href="toys.html" class="btn-primary">
+                        <i class="fas fa-gifts"></i> Перейти в каталог
+                    </a>
+                </div>
+                
+                <div id="cartItemsContainer" class="cart-items-container">
+                    <!-- Товары в корзине будут добавляться через JS -->
+                </div>
+            </div>
+            
+            <div class="cart-summary">
+                <h2><i class="fas fa-receipt"></i> Итого</h2>
+                
+                <div class="summary-details">
+                    <div class="summary-row">
+                        <span>Товары:</span>
+                        <span id="subtotal">0 ₽</span>
+                    </div>
+                    
+                    <div class="summary-row">
+                        <span>Доставка:</span>
+                        <span id="shipping">0 ₽</span>
+                    </div>
+                    
+                    <div class="summary-row discount">
+                        <span>Скидка:</span>
+                        <span id="discount">-0 ₽</span>
+                    </div>
+                    
+                    <div class="summary-row total">
+                        <span>К оплате:</span>
+                        <span id="total">0 ₽</span>
+                    </div>
+                </div>
+                
+                <div class="promo-code">
+                    <input type="text" placeholder="Промокод" id="promoInput">
+                    <button class="btn-promo" id="applyPromo">Применить</button>
+                </div>
+                
+                <button class="btn-checkout" id="checkoutBtn">
+                    <i class="fas fa-lock"></i> Перейти к оформлению
+                </button>
+                
+                <div class="secure-payment">
+                    <p><i class="fas fa-shield-alt"></i> Безопасная оплата</p>
+                    <div class="payment-icons">
+                        <i class="fab fa-cc-visa"></i>
+                        <i class="fab fa-cc-mastercard"></i>
+                        <i class="fab fa-cc-mir"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Рекомендуемые товары -->
+        <div class="recommended-section">
+            <h2><i class="fas fa-heart"></i> Вам может понравиться</h2>
+            <div class="products-grid" id="recommendedProducts">
+                <!-- Рекомендуемые товары -->
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <!-- Тот же подвал -->
+    </footer>
+
+    <script src="cart.js"></script>
+    <script>
+        // Рекомендуемые товары для корзины
+        const recommendedProducts = [
+            {
+                id: 11,
+                name: "Новогодний носок для подарков",
+                price: 450,
+                image: "https://images.unsplash.com/photo-1542718610-a1d656d1884c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+                badge: "Сопутствующий"
+            },
+            {
+                id: 12,
+                name: "Мини-гирлянда",
+                price: 350,
+                image: "https://images.unsplash.com/photo-1512529904539-2034f9e1c8b9?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+            },
+            {
+                id: 13,
+                name: "Ёлочный шарик 'С Новым годом'",
+                price: 290,
+                image: "https://images.unsplash.com/photo-1572386233853-c3d0d61f6d13?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+            }
+        ];
+
+        function renderRecommendedProducts() {
+            const container = document.getElementById('recommendedProducts');
+            if (!container) return;
+            
+            container.innerHTML = recommendedProducts.map(product => `
+                <div class="product-card">
+                    ${product.badge ? `<span class="product-badge">${product.badge}</span>` : ''}
+                    <img src="${product.image}" alt="${product.name}" class="product-image">
+                    <div class="product-info">
+                        <h3 class="product-name">${product.name}</h3>
+                        <div class="product-price">${product.price} ₽</div>
+                        <button class="btn-add-to-cart" data-id="${product.id}">
+                            <i class="fas fa-cart-plus"></i> В корзину
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+            
+            // Добавляем обработчики
+            document.querySelectorAll('.btn-add-to-cart').forEach(button => {
+                button.addEventListener('click', function() {
+                    const productId = parseInt(this.dataset.id);
+                    addToCart(productId);
+                    renderCartPage();
+                });
+            });
+        }
+
+        function renderCartPage() {
+            const cart = getCart();
+            const cartEmpty = document.getElementById('cartEmpty');
+            const cartItemsContainer = document.getElementById('cartItemsContainer');
+            
+            if (cart.length === 0) {
+                cartEmpty.style.display = 'block';
+                cartItemsContainer.innerHTML = '';
+                return;
+            }
+            
+            cartEmpty.style.display = 'none';
+            
+            let itemsHTML = '';
+            cart.forEach(item => {
+                itemsHTML += `
+                    <div class="cart-item" data-id="${item.id}">
+                        <img src="${item.image}" alt="${item.name}" class="cart-item-image">
+                        <div class="cart-item-info">
+                            <h3 class="cart-item-name">${item.name}</h3>
+                            <div class="cart-item-price">${item.price} ₽</div>
+                            <div class="cart-item-controls">
+                                <button class="btn-quantity minus" data-id="${item.id}">-</button>
+                                <span class="quantity">${item.quantity}</span>
+                                <button class="btn-quantity plus" data-id="${item.id}">+</button>
+                                <button class="btn-remove" data-id="${item.id}">
+                                    <i class="fas fa-trash"></i> Удалить
+                                </button>
+                            </div>
+                        </div>
+                        <div class="cart-item-total">
+                            ${item.price * item.quantity} ₽
+                        </div>
+                    </div>
+                `;
+            });
+            
+            cartItemsContainer.innerHTML = itemsHTML;
+            
+            // Добавляем обработчики для кнопок в корзине
+            document.querySelectorAll('.btn-quantity.minus').forEach(button => {
+                button.addEventListener('click', function() {
+                    const productId = parseInt(this.dataset.id);
+                    updateQuantity(productId, -1);
+                    renderCartPage();
+                });
+            });
+            
+            document.querySelectorAll('.btn-quantity.plus').forEach(button => {
+                button.addEventListener('click', function() {
+                    const productId = parseInt(this.dataset.id);
+                    updateQuantity(productId, 1);
+                    renderCartPage();
+                });
+            });
+            
+            document.querySelectorAll('.btn-remove').forEach(button => {
+                button.addEventListener('click', function() {
+                    const productId = parseInt(this.dataset.id);
+                    removeFromCart(productId);
+                    renderCartPage();
+                });
+            });
+            
+            updateCartTotal();
+        }
+
+        function updateCartTotal() {
+            const cart = getCart();
+            const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            const shipping = subtotal > 3000 ? 0 : 300;
+            const total = subtotal + shipping;
+            
+            document.getElementById('subtotal').textContent = `${subtotal} ₽`;
+            document.getElementById('shipping').textContent = `${shipping} ₽`;
+            document.getElementById('total').textContent = `${total} ₽`;
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            updateCartCount();
+            renderCartPage();
+            renderRecommendedProducts();
+            
+            // Промокод
+            document.getElementById('applyPromo').addEventListener('click', function() {
+                const promoInput = document.getElementById('promoInput');
+                const promo = promoInput.value.trim().toUpperCase();
+                
+                if (promo === 'NEWYEAR2023') {
+                    alert('Промокод применён! Скидка 10%');
+                    promoInput.disabled = true;
+                    this.disabled = true;
+                    this.textContent = 'Применён';
+                    
+                    // Обновляем итоговую сумму со скидкой
+                    const totalElement = document.getElementById('total');
+                    const total = parseFloat(totalElement.textContent);
+                    const discount = total * 0.1;
+                    const newTotal = total - discount;
+                    
+                    document.getElementById('discount').textContent = `-${discount.toFixed(0)} ₽`;
+                    totalElement.textContent = `${newTotal.toFixed(0)} ₽`;
+                } else if (promo) {
+                    alert('Промокод недействителен');
+                } else {
+                    alert('Введите промокод');
+                }
+            });
+            
+            // Оформление заказа
+            document.getElementById('checkoutBtn').addEventListener('click', function() {
+                const cart = getCart();
+                if (cart.length === 0) {
+                    alert('Добавьте товары в корзину');
+                    return;
+                }
+                
+                const total = document.getElementById('total').textContent;
+                if (confirm(`Подтвердить заказ на сумму ${total}?`)) {
+                    alert('Заказ оформлен! Мы свяжемся с вами для подтверждения.');
+                    clearCart();
+                    updateCartCount();
+                    renderCartPage();
+                }
+            });
+        });
+    </script>
+</body>
+</html>

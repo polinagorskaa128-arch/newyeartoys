@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Каталог игрушек - Новогодняя Лавка</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container header-container">
+            <div class="logo">
+                <i class="fas fa-tree"></i>
+                <h1>Новогодняя <span>Лавка</span></h1>
+            </div>
+            
+            <nav class="nav">
+                <ul>
+                    <li><a href="index.html"><i class="fas fa-home"></i> Главная</a></li>
+                    <li><a href="toys.html" class="active"><i class="fas fa-gift"></i> Игрушки</a></li>
+                    <li><a href="delivery.html"><i class="fas fa-truck"></i> Доставка</a></li>
+                    <li><a href="contacts.html"><i class="fas fa-phone"></i> Контакты</a></li>
+                </ul>
+            </nav>
+            
+            <div class="cart-header">
+                <a href="cart.html" class="cart-link">
+                    <i class="fas fa-shopping-cart cart-icon"></i>
+                    <span class="cart-count">0</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="page-header">
+            <h1><i class="fas fa-gifts"></i> Каталог ёлочных игрушек</h1>
+            <p>Более 150 уникальных игрушек для вашей новогодней ёлки</p>
+        </div>
+
+        <!-- Фильтры -->
+        <div class="filters">
+            <div class="filter-group">
+                <h3><i class="fas fa-filter"></i> Категории</h3>
+                <div class="filter-options">
+                    <button class="filter-btn active" data-filter="all">Все игрушки</button>
+                    <button class="filter-btn" data-filter="glass">Стеклянные</button>
+                    <button class="filter-btn" data-filter="wood">Деревянные</button>
+                    <button class="filter-btn" data-filter="handmade">Ручная работа</button>
+                    <button class="filter-btn" data-filter="vintage">Винтажные</button>
+                </div>
+            </div>
+            
+            <div class="filter-group">
+                <h3><i class="fas fa-sort-amount-up"></i> Сортировка</h3>
+                <select class="sort-select">
+                    <option value="popular">По популярности</option>
+                    <option value="price-asc">По цене: от дешевых</option>
+                    <option value="price-desc">По цене: от дорогих</option>
+                    <option value="new">По новизне</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Товары -->
+        <div class="products-grid" id="productsGrid">
+            <!-- Товары загружаются через JavaScript -->
+        </div>
+
+        <!-- Пагинация -->
+        <div class="pagination">
+            <button class="pagination-btn active">1</button>
+            <button class="pagination-btn">2</button>
+            <button class="pagination-btn">3</button>
+            <span>...</span>
+            <button class="pagination-btn">5</button>
+            <button class="pagination-btn next">Далее <i class="fas fa-chevron-right"></i></button>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <!-- Тот же подвал, что на главной -->
+                <div class="footer-section">
+                    <div class="logo">
+                        <i class="fas fa-tree"></i>
+                        <h3>Новогодняя <span>Лавка</span></h3>
+                    </div>
+                    <p>Создаём праздничное настроение с 2015 года</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Магазин</h4>
+                    <ul>
+                        <li><a href="toys.html">Все игрушки</a></li>
+                        <li><a href="toys.html?category=glass">Стеклянные</a></li>
+                        <li><a href="toys.html?category=wood">Деревянные</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Контакты</h4>
+                    <p><i class="fas fa-phone"></i> +7 (999) 123-45-67</p>
+                    <p><i class="fas fa-envelope"></i> hello@newyear-shop.ru</p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2023 Новогодняя Лавка. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="cart.js"></script>
+    <script>
+        // Все товары
+        const allProducts = [
+            {
+                id: 1,
+                name: "Стеклянный шар 'Снежинка'",
+                description: "Хрупкий стеклянный шар с ручной росписью снежинками",
+                price: 850,
+                image: "https://images.unsplash.com/photo-1512386233853-c3d0d61f6d13?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+                category: "glass",
+                badge: "Хит продаж"
+            },
+            {
+                id: 2,
+                name: "Деревянный олень",
+                description: "Резной деревянный олень с новогодним узором",
+                price: 1200,
+                image: "https://images.unsplash.com/photo-1574359411659-619d6d6c1415?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+                category: "wood",
+                badge: "Эко-товар"
+            },
+            {
+                id: 3,
+                name: "Вязаный снеговик",
+                description: "Мягкий вязаный снеговик ручной работы",
+                price: 650,
+                image: "https://images.unsplash.com/photo-1542718610-a1d656d1884c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+                category: "handmade"
+            },
+            {
+                id: 4,
+                name: "Винтажная шишка",
+                description: "Старинная игрушка в винтажном стиле",
+                price: 950,
+                image: "https://images.unsplash.com/photo-1573869900138-93b8f6760ee5?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+                category: "vintage",
+                badge: "Винтаж"
+            },
+            {
+                id: 5,
+                name: "Светящаяся гирлянда",
+                description: "Тёплая светодиодная гирлянда с 8 режимами",
+                price: 1800,
+                image: "https://images.unsplash.com/photo-1512529904539-2034f9e1c8b9?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+                category: "lights"
+            },
+            {
+                id: 6,
+                name: "Ангел из фетра",
+                description: "Милый ангелочек, сшитый вручную из фетра",
+                price: 720,
+                image: "https://images.unsplash.com/photo-1579547944212-c4f496d3044f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+                category: "handmade"
+            },
+            {
+                id: 7,
+                name: "Шар 'Морозный узор'",
+                description: "Стеклянный шар с эффектом инея и морозными узорами",
+                price: 1100,
+                image: "https://images.unsplash.com/photo-1574359455812-215704cd0c84?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+                category: "glass",
+                badge: "Новинка"
+            },
+            {
+                id: 8,
+                name: "Ёлочка из дерева",
+                description: "Миниатюрная резная ёлочка из натурального дерева",
+                price: 890,
+                image: "https://images.unsplash.com/photo-1606836131093-60d8ce42f5c5?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+                category: "wood"
+            },
+            {
+                id: 9,
+                name: "Снеговик из шерсти",
+                description: "Валяный снеговик из натуральной шерсти",
+                price: 750,
+                image: "https://images.unsplash.com/photo-1482513454561-4245d1b41618?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+                category: "handmade"
+            },
+            {
+                id: 10,
+                name: "Звезда на верхушку",
+                description: "Большая светящаяся звезда для верхушки ёлки",
+                price: 1500,
+                image: "https://images.unsplash.com/photo-1577720643365-7c9c7b69d0c6?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+                category: "lights",
+                badge: "Популярное"
+            }
+        ];
+
+        function renderProducts(products = allProducts) {
+            const container = document.getElementById('productsGrid');
+            if (!container) return;
+            
+            container.innerHTML = products.map(product => `
+                <div class="product-card" data-category="${product.category}">
+                    ${product.badge ? `<span class="product-badge">${product.badge}</span>` : ''}
+                    <img src="${product.image}" alt="${product.name}" class="product-image">
+                    <div class="product-info">
+                        <h3 class="product-name">${product.name}</h3>
+                        <p class="product-description">${product.description}</p>
+                        <div class="product-footer">
+                            <div class="product-price">${product.price} ₽</div>
+                            <button class="btn-add-to-cart" data-id="${product.id}">
+                                <i class="fas fa-cart-plus"></i> В корзину
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+            
+            // Добавляем обработчики для кнопок
+            document.querySelectorAll('.btn-add-to-cart').forEach(button => {
+                button.addEventListener('click', function() {
+                    const productId = parseInt(this.dataset.id);
+                    addToCart(productId);
+                });
+            });
+        }
+
+        function setupFilters() {
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const sortSelect = document.querySelector('.sort-select');
+            
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Убираем активный класс у всех кнопок
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    // Добавляем активный класс текущей кнопке
+                    this.classList.add('active');
+                    
+                    const filter = this.dataset.filter;
+                    let filteredProducts = allProducts;
+                    
+                    if (filter !== 'all') {
+                        filteredProducts = allProducts.filter(p => p.category === filter);
+                    }
+                    
+                    // Применяем сортировку
+                    const sort = sortSelect.value;
+                    filteredProducts = sortProducts(filteredProducts, sort);
+                    
+                    renderProducts(filteredProducts);
+                });
+            });
+            
+            if (sortSelect) {
+                sortSelect.addEventListener('change', function() {
+                    const filterBtn = document.querySelector('.filter-btn.active');
+                    const filter = filterBtn ? filterBtn.dataset.filter : 'all';
+                    
+                    let filteredProducts = filter === 'all' 
+                        ? allProducts 
+                        : allProducts.filter(p => p.category === filter);
+                    
+                    filteredProducts = sortProducts(filteredProducts, this.value);
+                    renderProducts(filteredProducts);
+                });
+            }
+        }
+        
+        function sortProducts(products, sortType) {
+            const sorted = [...products];
+            
+            switch(sortType) {
+                case 'price-asc':
+                    return sorted.sort((a, b) => a.price - b.price);
+                case 'price-desc':
+                    return sorted.sort((a, b) => b.price - a.price);
+                case 'new':
+                    return sorted.reverse(); // Просто для примера
+                default:
+                    return sorted; // По популярности (исходный порядок)
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            updateCartCount();
+            renderProducts();
+            setupFilters();
+            
+            // Проверяем URL параметры
+            const urlParams = new URLSearchParams(window.location.search);
+            const category = urlParams.get('category');
+            if (category) {
+                const filterBtn = document.querySelector(`.filter-btn[data-filter="${category}"]`);
+                if (filterBtn) {
+                    filterBtn.click();
+                }
+            }
+        });
+    </script>
+</body>
+</html>
