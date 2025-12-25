@@ -122,7 +122,7 @@
     </footer>
 
     <script>
-        // ФУНКЦИИ КОРЗИНЫ
+        ФУНКЦИИ КОРЗИНЫ
         const productsDB = {
             1: { id: 1, name: "Стеклянный шар 'Снежинка'", price: 850, category: "glass", image: "https://www.toys-land.ru/img/goods/small/ku-65-194111-51.jpg auto=format&fit=crop&w=300&h=300&q=8" },
             2: { id: 2, name: "Деревянный олень", price: 1200, category: "wood", image: "https://ir.ozone.ru/s3/multimedia-9/6851019537.jpg auto=format&fit=crop&w=300&h=300&q=80" },
@@ -194,7 +194,7 @@
             }, 3000);
         }
 
-        // ВСЕ ТОВАРЫ
+        ВСЕ ТОВАРЫ
         const allProducts = [
             { id: 1, name: "Стеклянный шар 'Снежинка'", description: "Хрупкий стеклянный шар с ручной росписью снежинками", price: 850, category: "glass", image:" https://www.toys-land.ru/img/goods/small/ku-65-194111-51.jpg auto=format&fit=crop&w=300&h=300&q=80", badge: "Хит продаж" },
             { id: 2, name: "Деревянный олень", description: "Резной деревянный олень с новогодним узором", price: 1200, category: "wood", image: "https://ir.ozone.ru/s3/multimedia-9/6851019537.jpg auto=format&fit=crop&w=300&h=300&q=80", badge: "Эко-товар" },
@@ -219,7 +219,7 @@
                 filteredProducts = filteredProducts.filter(p => p.category === currentFilter);
             }
             
-            // Сортировка
+             Сортировка
             filteredProducts = sortProducts(filteredProducts, currentSort);
             
             if (filteredProducts.length === 0) {
@@ -250,7 +250,7 @@
                 </div>
             `).join('');
             
-            // Добавляем обработчики
+            Добавляем обработчики
             document.querySelectorAll('.btn-add-to-cart').forEach(button => {
                 button.addEventListener('click', function() {
                     const productId = parseInt(this.dataset.id);
@@ -296,13 +296,13 @@
             }
         }
 
-        // ИНИЦИАЛИЗАЦИЯ
+         ИНИЦИАЛИЗАЦИЯ
         document.addEventListener('DOMContentLoaded', function() {
             updateCartCount();
             renderProducts();
             setupFilters();
             
-            // Проверяем URL параметры
+            Проверяем URL параметры
             const urlParams = new URLSearchParams(window.location.search);
             const category = urlParams.get('category');
             if (category) {
@@ -311,7 +311,7 @@
                     filterBtn.click();
                 }
             }
-        });
+        };
     </script>
 </body>
 </html>
